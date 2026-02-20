@@ -1,7 +1,11 @@
 
 import React from 'react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onNavigate: (view: 'home' | 'services' | 'pricing') => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background Gradients */}
@@ -27,7 +31,10 @@ const Hero: React.FC = () => {
               We build high-converting websites and run laser-focused local SEO for plumbers, roofers, HVAC pros, realtors & service businesses — delivering 3–5× more leads in 90 days.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <button className="w-full sm:w-auto bg-[#007BFF] text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-[#007BFF]/20 hover:bg-[#0069d9] transition-all transform hover:-translate-y-1">
+              <button 
+                onClick={() => onNavigate('pricing')}
+                className="w-full sm:w-auto bg-[#007BFF] text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-[#007BFF]/20 hover:bg-[#0069d9] transition-all transform hover:-translate-y-1"
+              >
                 View Pricing Plans
               </button>
               <button className="w-full sm:w-auto bg-white text-slate-900 border border-slate-200 px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
@@ -38,7 +45,7 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="flex-1 relative flex justify-center items-center">
-            {/* Phone Mockup - Made wider: w-80 (20rem) instead of w-72 (18rem) */}
+            {/* Phone Mockup */}
             <div className="relative z-10 w-80 h-[580px] bg-slate-900 rounded-[3rem] border-[8px] border-slate-800 shadow-2xl overflow-hidden ring-4 ring-white/20">
               {/* Notch */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-800 rounded-b-2xl z-20"></div>

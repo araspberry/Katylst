@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 interface ContactShelfProps {
@@ -42,11 +41,9 @@ const ContactShelf: React.FC<ContactShelfProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = () => {
     setIsSubmitting(true);
-    // Simulate high-impact submission effect
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      // Wait a bit before closing on success
       setTimeout(() => {
         onClose();
       }, 3500);
@@ -65,24 +62,26 @@ const ContactShelf: React.FC<ContactShelfProps> = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Overlay with dynamic blur */}
       <div 
         className={`fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[60] transition-opacity duration-700 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={onClose}
       />
       
-      {/* Shelf */}
       <div className={`fixed top-0 right-0 h-full w-full max-w-xl bg-white z-[70] shadow-[0_0_100px_rgba(0,123,255,0.1)] transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} flex flex-col overflow-hidden border-l border-slate-100`}>
         
-        {/* Creative Background Layers */}
         <div className="absolute inset-0 bg-grid-slate-100 pointer-events-none -z-10"></div>
         <div className="absolute top-[-5%] right-[-10%] w-[500px] h-[500px] bg-[#007BFF]/5 rounded-full blur-[120px] animate-float -z-10"></div>
         <div className="absolute bottom-[10%] left-[-20%] w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] animate-float-delayed -z-10"></div>
 
-        {/* Floating Header */}
         <div className="p-6 flex justify-between items-center bg-white/40 backdrop-blur-xl sticky top-0 z-30 border-b border-slate-50">
           <div className="flex items-center gap-3 group cursor-default">
-            <div className="w-10 h-10 bg-[#007BFF] rounded-xl flex items-center justify-center text-white font-black text-lg shadow-lg shadow-[#007BFF]/20 group-hover:rotate-12 transition-transform">K</div>
+            <div className="w-10 h-10 bg-[#007BFF] rounded-xl flex items-center justify-center text-white shadow-lg shadow-[#007BFF]/20 group-hover:rotate-12 transition-transform">
+              <svg viewBox="27 27 49 47" className="w-7 h-7 fill-white">
+                <path d="M30 30.5h16.6v39.5h-16.6z" />
+                <path d="M51.6 30.5h15.2l-10.2 14z" />
+                <path d="M47.2 48.4l10-1 15.6 22.6h-19.6z" />
+              </svg>
+            </div>
             <div className="flex flex-col">
               <span className="text-sm font-black text-slate-900 tracking-tighter uppercase leading-none">Katylst</span>
               <span className="text-[10px] font-bold text-[#007BFF] uppercase tracking-[0.2em]">Partner Hub</span>
@@ -96,7 +95,6 @@ const ContactShelf: React.FC<ContactShelfProps> = ({ isOpen, onClose }) => {
         <div className="flex-grow overflow-y-auto px-8 md:px-16 pb-12 scrollbar-hide relative">
           
           {isSuccess ? (
-            /* Creative Success Screen */
             <div className="h-full flex flex-col items-center justify-center text-center animate-success py-20">
               <div className="w-32 h-32 bg-green-50 rounded-full flex items-center justify-center mb-8 relative">
                 <div className="absolute inset-0 bg-green-500/20 rounded-full animate-ping"></div>
@@ -114,7 +112,6 @@ const ContactShelf: React.FC<ContactShelfProps> = ({ isOpen, onClose }) => {
             </div>
           ) : (
             <>
-              {/* Creative Intro Section */}
               <div className="mt-12 mb-16 animate-in fade-in slide-in-from-top-8 duration-1000">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#007BFF]/10 text-[#007BFF] text-[10px] font-black uppercase tracking-[0.1em] mb-6 border border-[#007BFF]/10">
                   <span className="w-1.5 h-1.5 bg-[#007BFF] rounded-full animate-pulse"></span>
@@ -125,7 +122,6 @@ const ContactShelf: React.FC<ContactShelfProps> = ({ isOpen, onClose }) => {
                 </h2>
               </div>
 
-              {/* Central Hub Actions */}
               <div className="mb-20 animate-in fade-in slide-in-from-top-12 duration-1000 delay-200">
                 <div className="relative p-1 rounded-[2.5rem] bg-gradient-to-br from-slate-100 to-white shadow-sm border border-slate-100">
                   <div className="p-8">
@@ -150,7 +146,6 @@ const ContactShelf: React.FC<ContactShelfProps> = ({ isOpen, onClose }) => {
                 </div>
               </div>
 
-              {/* Multi-step Experience */}
               <div className="pt-16 border-t border-slate-100 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
                 <div className="mb-12">
                    <div className="flex justify-between items-center mb-6">
@@ -240,7 +235,6 @@ const ContactShelf: React.FC<ContactShelfProps> = ({ isOpen, onClose }) => {
           )}
         </div>
         
-        {/* Subtle Bottom Bar */}
         {!isSuccess && (
           <div className="p-8 border-t border-slate-50 bg-slate-50/30 text-center">
             <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2">

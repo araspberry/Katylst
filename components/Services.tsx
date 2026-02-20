@@ -2,7 +2,11 @@
 import React from 'react';
 import { SERVICES } from '../constants';
 
-const Services: React.FC = () => {
+interface ServicesProps {
+  onNavigate: (view: 'home' | 'services') => void;
+}
+
+const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
   return (
     <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,9 +32,12 @@ const Services: React.FC = () => {
                 {service.description}
               </p>
               <div className="mt-8">
-                <a href="#" className="text-[#007BFF] font-bold flex items-center group-hover:gap-2 transition-all">
+                <button 
+                  onClick={() => onNavigate('services')}
+                  className="text-[#007BFF] font-bold flex items-center group-hover:gap-2 transition-all hover:underline"
+                >
                   Learn more <i className="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                </a>
+                </button>
               </div>
             </div>
           ))}
