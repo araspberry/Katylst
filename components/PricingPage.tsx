@@ -72,48 +72,62 @@ const PricingPage: React.FC<PricingPageProps> = ({ onOpenShelf }) => {
       </section>
 
       {/* Main Pricing Cards */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-32">
+      <section className="py-24 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-40">
             {PRICING_PLANS.map((plan, idx) => (
               <div 
                 key={idx}
-                className={`group relative p-8 rounded-[2rem] flex flex-col transition-all duration-500 hover:shadow-2xl ${
+                className={`group relative p-8 rounded-[2.5rem] flex flex-col transition-all duration-500 hover:-translate-y-2 ${
                   plan.recommended 
-                    ? 'bg-slate-900 text-white shadow-xl scale-105 z-10' 
-                    : 'bg-slate-50 text-slate-900 border border-slate-100'
+                    ? 'bg-slate-900 text-white shadow-2xl scale-105 z-10' 
+                    : 'bg-white text-slate-900 border border-slate-100 shadow-sm hover:shadow-xl'
                 }`}
               >
                 {plan.recommended && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#007BFF] text-white text-[9px] font-black uppercase px-4 py-1.5 rounded-full tracking-widest shadow-xl">
-                    RECOMMENDED
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#007BFF] text-white text-[9px] font-black uppercase px-4 py-1.5 rounded-full tracking-[0.2em] shadow-lg whitespace-nowrap">
+                    Most Popular
                   </div>
                 )}
                 
-                <div className="mb-6">
+                <div className="mb-8">
                   <div className={`text-[10px] font-black uppercase tracking-[0.2em] mb-4 ${plan.recommended ? 'text-[#007BFF]' : 'text-slate-400'}`}>
                     {plan.name}
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-black tracking-tighter">{plan.price}</span>
-                      <span className={`text-[10px] font-bold uppercase tracking-widest ${plan.recommended ? 'text-slate-500' : 'text-slate-400'}`}>
+                  <div className="flex flex-col">
+                    <div className="flex items-baseline gap-1 flex-wrap">
+                      <span className="text-4xl font-black tracking-tighter">{plan.price}</span>
+                      <span className={`text-[10px] font-bold uppercase tracking-widest opacity-50`}>
                         {plan.period}
                       </span>
                     </div>
+                    {plan.subPrice && (
+                      <div className="text-[11px] font-bold text-[#007BFF] mt-1 uppercase tracking-wider">{plan.subPrice}</div>
+                    )}
                   </div>
                 </div>
 
-                <p className={`text-[11px] mb-8 leading-relaxed font-medium ${plan.recommended ? 'text-slate-400' : 'text-slate-500'}`}>
+                <div className={`h-px w-full mb-8 ${plan.recommended ? 'bg-white/10' : 'bg-slate-100'}`}></div>
+
+                <p className={`text-[12px] mb-8 leading-relaxed font-medium min-h-[48px] ${plan.recommended ? 'text-slate-400' : 'text-slate-500'}`}>
                   {plan.description}
                 </p>
 
+                <div className="flex-grow space-y-3 mb-10">
+                  {plan.features.slice(0, 5).map((feature, fIdx) => (
+                    <div key={fIdx} className="flex items-start gap-2">
+                      <div className={`mt-1.5 w-1 h-1 rounded-full shrink-0 ${plan.recommended ? 'bg-[#007BFF]' : 'bg-slate-300'}`}></div>
+                      <span className={`text-[11px] leading-tight font-medium ${plan.recommended ? 'text-slate-300' : 'text-slate-600'}`}>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
                 <button 
                   onClick={onOpenShelf}
-                  className={`w-full py-4 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all ${
+                  className={`w-full py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.15em] transition-all duration-300 ${
                   plan.recommended
-                    ? 'bg-[#007BFF] text-white hover:bg-blue-600'
-                    : 'bg-white text-slate-900 border border-slate-200 hover:bg-slate-50'
+                    ? 'bg-[#007BFF] text-white hover:bg-white hover:text-slate-900'
+                    : 'bg-slate-900 text-white hover:bg-[#007BFF]'
                 }`}>
                   Get Started
                 </button>
