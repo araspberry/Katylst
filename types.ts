@@ -1,4 +1,28 @@
 
+export interface Theme {
+  primary: string;
+  accent: string;
+  bg: string;
+  surface: string;
+  ink: string;
+  inkMuted: string;
+  fontSans: string;
+  fontSerif: string;
+  vibe: 'obsidian' | 'clean' | 'luxury' | 'organic';
+}
+
+export interface Site {
+  id: string;
+  clientName: string;
+  serviceType: string;
+  theme: Theme;
+  status: 'active' | 'draft' | 'archived';
+  leadsCount: number;
+  createdAt: string;
+  url?: string;
+  isCustom?: boolean;
+}
+
 export interface Service {
   id: string;
   title: string;

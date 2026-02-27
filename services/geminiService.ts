@@ -57,6 +57,6 @@ export const getSeoAudit = async (websiteUrl: string, businessType: string): Pro
     return JSON.parse(text) as AuditResult;
   } catch (error: any) {
     console.error("Gemini Audit Service Error:", error);
-    throw new Error(error.message || "The audit engine is currently offline. Please try again in a moment.");
+    throw new Error(error.message || "The audit engine is currently offline. Please try again in a moment.", { cause: error });
   }
 };
