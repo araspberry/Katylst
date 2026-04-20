@@ -11,7 +11,7 @@ const LEADS = [
   { src: 'google', icon: Search, color: 'text-k-orange', label: 'GOOGLE', time: '12h ago', title: 'New Lead from Business Profile', sub: 'Search Lead' },
 ]
 
-function NotifCard({ lead }) {
+function NotifCard({ lead }: { lead: typeof LEADS[0] }) {
   const Icon = lead.icon
   return (
     <div className="bg-white rounded-[14px] p-[11px_13px] shadow-[0_1px_6px_rgba(0,0,0,0.08)] flex-shrink-0">
