@@ -4,8 +4,6 @@ import { Send } from 'lucide-react'
 const services = ['Local SEO', 'Web Design', 'Content Strategy', 'Google Maps', 'Analytics']
 const company  = [
   { label: 'About',        href: '#' },
-  { label: 'Case Studies', href: '#' },
-  { label: 'Blog',         href: '#' },
   { label: 'Pricing',      href: '/pricing' },
   { label: 'Contact',      href: '/contact' },
 ]
