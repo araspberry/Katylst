@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
               }).catch((e: unknown) => console.warn('Resend error:', e))
       }
 
-      // Run PageSpeed Insights audit
+      // Run PageSpeed Insights audit 
       const apiKey = process.env.GOOGLE_PSI_KEY || ''
           const keyParam = apiKey ? `&key=${apiKey}` : ''
           const psiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices${keyParam}`
