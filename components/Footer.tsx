@@ -17,9 +17,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 no-underline mb-4">
-              <div className="w-[38px] h-[38px] bg-k-orange rounded-[9px] flex items-center justify-center text-white font-serif font-extrabold text-[19px] leading-none">
-                K
-              </div>
+              <img src="/katylst-logo.png" alt="Katylst" width={38} height={38} style={{ borderRadius: '9px' }} />
               <span className="font-sans font-semibold text-[17px] text-white tracking-[-0.2px]">
                 Katylst<em className="not-italic text-k-orange">.</em>
               </span>
