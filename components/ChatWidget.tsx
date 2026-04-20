@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { X, Send, Loader2 } from 'lucide-react'
+import { X, Send, Loader2, MessageCircle } from 'lucide-react'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -52,6 +52,18 @@ export default function ChatWidget() {
 
   return (
     <>
+      <style>{`
+        @keyframes chat-pulse {
+          0%   { box-shadow: 0 0 0 0 rgba(200,80,42,0.55); }
+          70%  { box-shadow: 0 0 0 14px rgba(200,80,42,0); }
+          100% { box-shadow: 0 0 0 0 rgba(200,80,42,0); }
+        }
+        .chat-pulse-btn {
+          animation: chat-pulse 2.2s ease-out infinite;
+        }
+      `}</style>
+
+      {/* Chat window */}
       {open && (
         <div className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-24px)] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-100" style={{ height: '480px' }}>
           {/* Header */}
@@ -103,15 +115,14 @@ export default function ChatWidget() {
         </div>
       )}
 
-      {/* Trigger button — Bethany's face */}
-      <button onClick={() => setOpen(!open)} aria-label="Chat with Bethany" className="fixed bottom-6 right-6 z-50 w-[56px] h-[56px] rounded-full overflow-hidden shadow-lg transition-transform hover:scale-105 active:scale-95 border-2 border-white" style={{ boxShadow: '0 4px 24px rgba(200,80,42,0.45)' }}>
-        {open ? (
-          <div className="w-full h-full bg-k-orange flex items-center justify-center">
-            <X className="w-6 h-6 text-white" />
-          </div>
-        ) : (
-          <img src="/bethany-avatar.png" alt="Chat with Bethany" className="w-full h-full object-cover object-top" />
-        )}
+      {/* Trigger button — orange with white icon + pulse */}
+      <button
+        onClick={() => setOpen(!open)}
+        aria-label="Chat with Bethany"
+        className={`fixed bottom-6 right-6 z-50 w-[56px] h-[56px] rounded-full bg-k-orange flex items-center justify-center text-white border-none cursor-pointer transition-transform hover:scale-105 active:scale-95 ${!open ? 'chat-pulse-btn' : ''}`}
+        style={{ boxShadow: '0 4px 24px rgba(200,80,42,0.45)' }}
+      >
+        {open ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
       </button>
     </>
   )
