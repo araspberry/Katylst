@@ -100,18 +100,7 @@ export default function AiAuditPage() {
     const em = email.trim()
     if (!em || !em.includes('@')) return
 
-    // Fire lead to growth@katylst.co
-    try {
-      const ejs = (await import('@emailjs/browser')).default
-      ejs.init(process.env.NEXT_PUBLIC_EMAILJS_KEY || '')
-      ejs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE  || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE || '',
-        { to_email: 'growth@katylst.co', from_email: em, website_url: url, message: `New SEO Audit Lead\nEmail: ${em}\nURL: ${url}\nTime: ${new Date().toLocaleString()}` }
-      )
-    } catch { /* fail silently — don't block UX */ }
-
-    setStep('loading')
+    setStep("loading")
     await runAudit(url)
   }
 
