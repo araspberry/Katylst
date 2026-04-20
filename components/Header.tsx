@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
@@ -18,12 +19,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-k-border">
       <div className="max-w-7xl mx-auto px-6 md:px-14 h-[66px] flex items-center justify-between">
-
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 no-underline">
-          <div className="w-[38px] h-[38px] bg-k-orange rounded-[9px] flex items-center justify-center text-white font-serif font-extrabold text-[19px] leading-none select-none">
-            K
-          </div>
+          <Image
+            src="/Katylst-logo.png"
+            alt="Katylst"
+            width={38}
+            height={38}
+            className="rounded-[9px]"
+          />
           <span className="font-sans font-semibold text-[17px] text-k-dark tracking-[-0.2px]">
             Katylst<em className="not-italic text-k-orange">.</em>
           </span>
