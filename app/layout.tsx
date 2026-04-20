@@ -3,6 +3,7 @@ import { Playfair_Display, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ChatWidget from '@/components/ChatWidget'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -52,13 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
-        {/* Chat widget */}
-        <button
-          aria-label="Chat with us"
-          className="fixed bottom-6 right-6 z-50 w-13 h-13 w-[52px] h-[52px] rounded-full bg-k-orange border-none cursor-pointer flex items-center justify-center text-2xl chat-pulse shadow-lg"
-        >
-          👋
-        </button>
+        <ChatWidget />
       </body>
     </html>
   )
