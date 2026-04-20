@@ -1,57 +1,60 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { PhoneCall, Sparkles } from 'lucide-react'
+import { PhoneCall, Sparkles, Globe, Search, Megaphone } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Pricing',
-  description: 'Transparent, results-focused pricing for local SEO and web design. No long-term contracts. Choose from Starter, Growth, or Authority plans.',
+  description: 'Transparent, results-focused pricing for websites, local SEO, and social media ads. No long-term contracts.',
 }
 
 const PLANS = [
   {
-    tier: 'Starter',
-    price: '997',
-    desc: 'Perfect for service businesses ready to establish their local digital presence and start generating consistent leads.',
+    icon: Globe,
+    tier: 'Websites',
+    price: '297',
+    label: '/month',
+    desc: 'A high-converting, mobile-optimized website built for local service businesses — designed to turn visitors into booked jobs.',
     features: [
-      'Custom website design & build',
-      'Google Business Profile optimization',
-      '5 target keywords tracked',
-      'Monthly SEO report',
-      'On-page optimization',
-      '2 content pieces/month',
+      'Custom design & build',
+      'Mobile-first & fast-loading',
+      'Contact & lead capture forms',
+      'Google Analytics setup',
+      'On-page SEO foundation',
+      'Hosting & maintenance included',
     ],
     cta: 'GET STARTED',
     popular: false,
   },
   {
-    tier: 'Growth',
-    price: '1,997',
-    desc: 'For established service businesses serious about dominating their local market and flooding their calendar with jobs.',
+    icon: Search,
+    tier: 'Local SEO',
+    price: '997',
+    label: '/month',
+    desc: 'Dominate local search and Google Maps so that when someone in your area searches for your service, they find you first.',
     features: [
-      'Everything in Starter',
-      '20 target keywords tracked',
-      'Local Maps campaign management',
-      '5 content pieces/month',
+      'Google Business Profile management',
+      'Local keyword targeting',
       'Citation building & cleanup',
+      'Monthly rankings report',
+      'On-page optimization',
       'Competitor gap analysis',
-      'Bi-weekly strategy calls',
     ],
     cta: 'GET STARTED',
     popular: true,
   },
   {
-    tier: 'Authority',
-    price: '3,497',
-    desc: 'The full-stack growth engine for multi-location businesses ready to own every zip code they serve.',
+    icon: Megaphone,
+    tier: 'Social Media Ads',
+    price: '799',
+    label: '/month + ad spend',
+    desc: 'Targeted Facebook and Instagram ad campaigns that put your business in front of homeowners actively looking for your services.',
     features: [
-      'Everything in Growth',
-      'Unlimited keywords tracked',
-      'Multi-location SEO strategy',
-      '10 content pieces/month',
-      'PR & link building campaigns',
-      'Advanced conversion optimization',
-      'Weekly strategy calls',
-      'Dedicated account manager',
+      'Facebook & Instagram campaigns',
+      'Custom audience targeting',
+      'Ad creative & copywriting',
+      'A/B testing & optimization',
+      'Lead form & landing page setup',
+      'Monthly performance report',
     ],
     cta: 'GET STARTED',
     popular: false,
@@ -60,10 +63,11 @@ const PLANS = [
 
 const FAQS = [
   { q: 'Are there any long-term contracts?', a: 'No. We work month-to-month. We earn your business every month by delivering results.' },
-  { q: 'How quickly will I see results?',    a: 'Most clients see measurable improvements in calls and leads within 60–90 days. SEO compounds over time, so results only improve.' },
-  { q: 'Do I own my website and content?',   a: 'Yes, 100%. You own everything we build. All accounts, all content, all data — always.' },
-  { q: 'What industries do you work with?',  a: 'We focus exclusively on local service businesses — plumbers, roofers, HVAC, realtors, landscapers, electricians, and similar trades.' },
+  { q: 'How quickly will I see results?', a: 'Most clients see measurable improvements in calls and leads within 60–90 days. SEO compounds over time, so results only improve.' },
+  { q: 'Do I own my website and content?', a: 'Yes, 100%. You own everything we build. All accounts, all content, all data — always.' },
+  { q: 'What industries do you work with?', a: 'We focus exclusively on local service businesses — plumbers, roofers, HVAC, realtors, landscapers, electricians, and similar trades.' },
   { q: 'What does the onboarding look like?', a: 'After signing, we kick off with a 90-minute strategy session, full audit, and launch your first deliverables within 2 weeks.' },
+  { q: 'Can I bundle services?', a: 'Absolutely. Clients who combine website + SEO + ads get our best results and bundle pricing. Reach out at growth@katylst.co to discuss.' },
 ]
 
 export default function PricingPage() {
@@ -76,7 +80,7 @@ export default function PricingPage() {
           Invest in growth,<br />not guesswork.
         </h1>
         <p className="text-[16.5px] text-k-mid leading-[1.7] max-w-[540px] mx-auto mb-4">
-          Every plan includes a dedicated strategist, monthly reporting, and our performance guarantee.
+          Simple, service-based pricing. Pick what you need, bundle for best results.
         </p>
         <p className="text-[13.5px] text-k-mid">No long-term contracts · Cancel anytime · You own everything</p>
       </section>
@@ -84,53 +88,57 @@ export default function PricingPage() {
       {/* Plans */}
       <section className="px-6 md:px-20 pb-24 max-w-[1440px] mx-auto">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PLANS.map(plan => (
-            <div
-              key={plan.tier}
-              className={`relative rounded-[10px] p-[38px_34px] border-[1.5px] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.1)] ${
-                plan.popular
-                  ? 'bg-k-dark border-k-dark text-white'
-                  : 'bg-white border-k-border'
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-[13px] left-1/2 -translate-x-1/2 bg-k-orange text-white text-[9.5px] font-bold tracking-[1.5px] uppercase px-4 py-1 rounded-full whitespace-nowrap">
-                  MOST POPULAR
-                </div>
-              )}
-              <p className="text-[10px] font-bold tracking-[2px] uppercase text-k-orange mb-2">{plan.tier}</p>
-              <div className="font-serif text-[46px] font-extrabold leading-none mb-1">
-                <span className="text-[20px] font-sans font-normal">$</span>{plan.price}
-              </div>
-              <p className={`text-[13px] mb-6 ${plan.popular ? 'text-white/40' : 'text-k-light'}`}>/month</p>
-              <p className={`text-[13.5px] leading-[1.62] mb-6 pb-6 border-b ${plan.popular ? 'text-white/55 border-white/10' : 'text-k-mid border-k-border'}`}>
-                {plan.desc}
-              </p>
-              <ul className="space-y-3 mb-8 list-none p-0 m-0">
-                {plan.features.map(f => (
-                  <li key={f} className={`flex gap-2.5 text-[13.5px] ${plan.popular ? 'text-white/70' : 'text-k-mid'}`}>
-                    <span className="text-k-orange font-bold flex-shrink-0">✓</span> {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/contact"
-                className={`block w-full text-center py-[13px] rounded-full text-[13px] font-bold tracking-[0.3px] no-underline transition-all duration-200 hover:-translate-y-0.5 ${
-                  plan.popular
-                    ? 'bg-k-orange text-white hover:bg-k-orange-lt'
-                    : 'bg-transparent text-k-dark border-[1.5px] border-[rgba(0,0,0,0.18)] hover:border-k-dark'
+          {PLANS.map(plan => {
+            const Icon = plan.icon
+            return (
+              <div
+                key={plan.tier}
+                className={`relative rounded-[10px] p-[38px_34px] border-[1.5px] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.1)] ${
+                  plan.popular ? 'bg-k-dark border-k-dark text-white' : 'bg-white border-k-border'
                 }`}
               >
-                {plan.cta} →
-              </Link>
-            </div>
-          ))}
+                {plan.popular && (
+                  <div className="absolute -top-[13px] left-1/2 -translate-x-1/2 bg-k-orange text-white text-[9.5px] font-bold tracking-[1.5px] uppercase px-4 py-1 rounded-full whitespace-nowrap">
+                    MOST POPULAR
+                  </div>
+                )}
+                <div className="w-10 h-10 rounded-lg bg-k-orange/10 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-k-orange" />
+                </div>
+                <p className="text-[10px] font-bold tracking-[2px] uppercase text-k-orange mb-2">{plan.tier}</p>
+                <div className="font-serif text-[46px] font-extrabold leading-none mb-1">
+                  <span className="text-[20px] font-sans font-normal">$</span>{plan.price}
+                </div>
+                <p className={`text-[13px] mb-6 ${plan.popular ? 'text-white/40' : 'text-k-light'}`}>{plan.label}</p>
+                <p className={`text-[13.5px] leading-[1.62] mb-6 pb-6 border-b ${plan.popular ? 'text-white/55 border-white/10' : 'text-k-mid border-k-border'}`}>
+                  {plan.desc}
+                </p>
+                <ul className="space-y-3 mb-8 list-none p-0 m-0">
+                  {plan.features.map(f => (
+                    <li key={f} className={`flex gap-2.5 text-[13.5px] ${plan.popular ? 'text-white/70' : 'text-k-mid'}`}>
+                      <span className="text-k-orange font-bold flex-shrink-0">✓</span> {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact"
+                  className={`block w-full text-center py-[13px] rounded-full text-[13px] font-bold tracking-[0.3px] no-underline transition-all duration-200 hover:-translate-y-0.5 ${
+                    plan.popular
+                      ? 'bg-k-orange text-white hover:bg-k-orange-lt'
+                      : 'bg-transparent text-k-dark border-[1.5px] border-[rgba(0,0,0,0.18)] hover:border-k-dark'
+                  }`}
+                >
+                  {plan.cta} →
+                </Link>
+              </div>
+            )
+          })}
         </div>
       </section>
 
       {/* Free audit nudge */}
       <section className="bg-white px-6 md:px-20 py-16 text-center">
-        <p className="text-[14px] text-k-mid mb-3">Not sure which plan is right for you?</p>
+        <p className="text-[14px] text-k-mid mb-3">Not sure where to start?</p>
         <Link href="/ai-audit" className="inline-flex items-center gap-2 bg-k-orange/10 text-k-orange text-[13px] font-bold px-6 py-3 rounded-full no-underline hover:bg-k-orange/20 transition-colors">
           <Sparkles className="w-4 h-4" /> Run a free SEO audit first — it takes 30 seconds
         </Link>
