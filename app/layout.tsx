@@ -21,7 +21,7 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
-const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID ?? 'G-0866QS4P4B'
+const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID ?? 'G-1959R72SBB'
 
 export const metadata: Metadata = {
   title: {
